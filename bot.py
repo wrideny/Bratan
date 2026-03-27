@@ -5,8 +5,8 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InlineQuer
 from aiogram.utils import executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-TOKEN = os.getenv("TOKEN")
-_admin_raw = os.getenv("ADMIN_ID", "").lstrip("@")
+_admin_raw = "".join(filter(str.isdigit, os.getenv("ADMIN_ID", "")))
+ADMIN_ID = int(_admin_raw)
 try:
     ADMIN_ID = int(_admin_raw)
 except ValueError:
